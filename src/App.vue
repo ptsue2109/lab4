@@ -1,15 +1,17 @@
 <template>
   <div id="app">
     <TreeNode />
+    <AddComp />
   </div>
 </template>
 
 <script>
-  import TreeNode from "@/components/TreeNode"
+  import TreeNode from "@/components/TreeNode";
+  import AddComp from "@/components/Add";
 export default {
   name: 'App',
   components: {
-    TreeNode
+    TreeNode,AddComp
   }
 }
 </script>
@@ -17,10 +19,8 @@ export default {
 <style lang="scss" >
   body{
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
     padding-top: 25px;
+    padding: 25px;
   }
 </style>

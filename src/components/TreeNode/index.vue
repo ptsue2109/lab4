@@ -15,24 +15,29 @@
     </div>
     <!-- nav -->
     <nav id="context-menu" class="context-menu">
-        <ul class="context-menu__items">
-          <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="View"
-              ><i class="fa fa-eye"></i> View Task</a
-            >
-          </li>
-          <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Edit"
-              ><i class="fa fa-edit"></i> Edit Task</a
-            >
-          </li>
-          <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Delete"
-              ><i class="fa fa-times"></i> Delete Task</a
-            >
-          </li>
-        </ul>
-      </nav>
+      <ul class="context-menu__items">
+        <li class="context-menu__item">
+          <a href="#" class="context-menu__link" data-action="Add"
+            ><i class="fa fa-eye"></i> Thêm phòng ban</a
+          >
+        </li>
+        <li class="context-menu__item">
+          <a href="#" class="context-menu__link" data-action="Delete"
+            ><i class="fa fa-edit"></i> Xóa phòng ban</a
+          >
+        </li>
+        <li class="context-menu__item">
+          <a href="#" class="context-menu__link" data-action="UpLevel"
+            ><i class="fa fa-times"></i> Nâng level</a
+          >
+        </li>
+        <li class="context-menu__item">
+          <a href="#" class="context-menu__link" data-action="DownLevel"
+            ><i class="fa fa-times"></i> Giảm level</a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
  
@@ -57,13 +62,26 @@ export default {
     handleClick(e) {
       console.log("right", e);
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
   },
 };
 </script>
  
  <style lang="scss" scoped>
 .node_content {
-  position: absolute;
+  // position: absolute;
   width: 499px;
   height: 400px;
   left: 64px;
@@ -85,17 +103,16 @@ export default {
     border: 1px solid #dcdcdc;
     margin-bottom: 15px;
   }
-  }
+}
 .context-menu {
-  display: none;
+   display: none;
   position: absolute;
   z-index: 10;
   padding: 12px 0;
-  width: 240px;
+  width: 150px;
   background-color: #fff;
-  border: solid 1px #ad0000;
+  border: solid 1px #dcdcdc;
   box-shadow: 1px 1px 2px #cfcfcf;
-  
 }
 
 .context-menu--active {
@@ -120,13 +137,14 @@ export default {
 .context-menu__link {
   display: block;
   padding: 4px 12px;
-  color: #0066aa;
+  color: #48647F;
   text-decoration: none;
+  height: 36px;
+  width: 100%;
 }
 
 .context-menu__link:hover {
   color: #fff;
-  background-color: #0066aa;
+  background-color: #48647F 
 }
-
 </style>
