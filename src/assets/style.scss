@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primaryColor: #48647F;
+    --errorColor: #FF7777;
+    --secondColor: #F0F0F0;
+    --red: #FE3838
+}
+body {
+    scroll-behavior: smooth;
+}
