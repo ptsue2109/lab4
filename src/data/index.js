@@ -1,4 +1,4 @@
-export const data = [
+export const listData = [
     { id: "0", name: "Phòng ban 0", level: 1, code: "DPM0-0", children: [] },
     {
       id: "1",
