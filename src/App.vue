@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <TreeNode />
-    <AddComp />
+    <!-- <AddComp /> -->
   </div>
 </template>
 
 <script>
-  import TreeNode from "@/components/TreeNode";
-  import AddComp from "@/components/Add";
+ import TreeNode from "@/components/TreeNode";
+  //import AddComp from "@/components/Add";
 export default {
   name: 'App',
   components: {
-    TreeNode,AddComp
+    TreeNode,
+    // AddComp
   }
 }
 </script>

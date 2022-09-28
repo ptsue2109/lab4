@@ -6,22 +6,30 @@
     <div class="add_content">
       <div class="form_control">
         <div class="form_group">
-          <label for="">Tên Phòng Ban</label>
-          <input type="text" placeholder="Tên Phòng Ban" name="phongBanName" />
+          <label for="">Tên Phòng ban</label>
+          <input
+            type="text"
+            placeholder="Tên Phòng ban"
+            name="phongBanName"
+            class="custom"
+          />
+          <p class="error">Tên phòng ban không được để trống, không chứa ký tự đặc biệt</p>
         </div>
         <div class="form_group">
-          <label for="">Mã Phòng Ban</label>
+          <label for="">Mã Phòng ban</label>
           <input
             type="text"
             placeholder="mã phòng ban (không bắt buộc)"
             name="maPhongBan"
+            class="custom"
           />
         </div>
       </div>
-    </div>
-    <div class="add_btn">
-      <button class="btn btn_cencel">Hủy</button>
-      <button class="btn btn_save">Lưu</button>
+
+      <div class="add_btn">
+        <button class="btn btn_cancel">Hủy</button>
+        <button class="btn btn_save">Lưu</button>
+      </div>
     </div>
   </div>
 </template>
@@ -42,19 +50,28 @@ export default {
   width: 500px;
   height: 325px;
   border: 1px solid #ccc;
+  border-radius: 3px;
 
   .add_header {
     height: 48px;
     background-color: #48647f;
     color: #ffff;
-    font-size: 15px;
-    float: left;
-    width: 100%;
-    padding-top: 5px;
-    border-radius: 3px;
+    font-size: 12px;
+    padding-left: 12px;
+    line-height: 40px;
+    border-radius: 2px 2px 0px 0px;
   }
   .add_content {
     padding: 25px;
+    height: 275px;
+    .form_control {
+      width: 100%;
+    }
+  }
+  .add_btn{
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end
   }
 }
 </style>

@@ -1,5 +1,5 @@
 export const data = [
-    { id: "0", name: "Phòng ban 1", level: 1, code: "DPM0-0", children: [] },
+    { id: "0", name: "Phòng ban 0", level: 1, code: "DPM0-0", children: [] },
     {
       id: "1",
       name: "Phòng ban 1",

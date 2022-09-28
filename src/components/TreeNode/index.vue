@@ -2,7 +2,7 @@
   <div class="">
     <div class="node_content">
       <div
-        class="content"
+        class="container"
         @click.right="handleClick"
         v-for="item in listData"
         :key="item.id"
@@ -12,32 +12,11 @@
         <TreeTilte :tiltle="item.code" />
         <TreeContent :content="item.name" />
       </div>
+      <!-- <div c    lass="" v-for="item in data.children" :key="item.id">
+          {{ item}}
+      </div> -->
     </div>
     <!-- nav -->
-    <nav id="context-menu" class="context-menu">
-      <ul class="context-menu__items">
-        <li class="context-menu__item">
-          <a href="#" class="context-menu__link" data-action="Add"
-            ><i class="fa fa-eye"></i> Thêm phòng ban</a
-          >
-        </li>
-        <li class="context-menu__item">
-          <a href="#" class="context-menu__link" data-action="Delete"
-            ><i class="fa fa-edit"></i> Xóa phòng ban</a
-          >
-        </li>
-        <li class="context-menu__item">
-          <a href="#" class="context-menu__link" data-action="UpLevel"
-            ><i class="fa fa-times"></i> Nâng level</a
-          >
-        </li>
-        <li class="context-menu__item">
-          <a href="#" class="context-menu__link" data-action="DownLevel"
-            ><i class="fa fa-times"></i> Giảm level</a
-          >
-        </li>
-      </ul>
-    </nav>
   </div>
 </template>
  
@@ -45,7 +24,7 @@
 import TreeNumber from "./TreeNumber";
 import TreeTilte from "./TreeTitle";
 import TreeContent from "./TreeContent";
-import { data } from "@/data";
+import { data } from "../../data";
 export default {
   name: "TreeNode",
   data() {
@@ -62,19 +41,6 @@ export default {
     handleClick(e) {
       console.log("right", e);
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
   },
 };
 </script>
@@ -90,7 +56,16 @@ export default {
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   padding: 25px;
-  .content {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 323px;
+    border: 1px solid var(--secondColor);
+    left: -126px;
+    top: 198px;
+    rotate: 90deg;
+  }
+  .container {
     width: 433px;
     height: 30px;
     border-radius: 4px;
@@ -100,51 +75,17 @@ export default {
     align-items: center;
     padding: 0px 5px;
     background: #ffffff;
-    border: 1px solid #dcdcdc;
+    border: 1px solid var(--secondColor);
     margin-bottom: 15px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      border: 1px solid var(--secondColor);
+      left: 36px;
+      top: 63px;
+    }
   }
-}
-.context-menu {
-   display: none;
-  position: absolute;
-  z-index: 10;
-  padding: 12px 0;
-  width: 150px;
-  background-color: #fff;
-  border: solid 1px #dcdcdc;
-  box-shadow: 1px 1px 2px #cfcfcf;
-}
-
-.context-menu--active {
-  display: block;
-}
-
-.context-menu__items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.context-menu__item {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.context-menu__item:last-child {
-  margin-bottom: 0;
-}
-
-.context-menu__link {
-  display: block;
-  padding: 4px 12px;
-  color: #48647F;
-  text-decoration: none;
-  height: 36px;
-  width: 100%;
-}
-
-.context-menu__link:hover {
-  color: #fff;
-  background-color: #48647F 
 }
 </style>
