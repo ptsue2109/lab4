@@ -96,21 +96,12 @@ export default {
     //levelDOWN
     onMinusLevel() {
       console.log("onMinusLevel");
-      // if (this.newRoom.level > 1) {
-      //   this.newRoom.level++;
-      //   if (this.newRoom.children) {
-      //     this.onMinusChildrenLevel(this.newRoom.children);
-      //   }
-      //   this.$emit("removeFromParent", this.newRoom);
-      // }
+    
     },
 
     onMinusChildrenLevel(data) {
       console.log("onMinusChildrenLevel", data);
-      // for (let child of data) {
-      //   child.level++;
-      //   if (child.children) this.onAddChildrenLevel(child.children);
-      // }
+     
     },
 
     //levelUp
@@ -120,20 +111,11 @@ export default {
     },
     onAddChildrenLevel() {
       console.log("onAddChildrenLevel");
-      // if (this.newRoom.level > 1) {
-      //   this.newRoom.level--;
-      //   if (this.newRoom.children) {
-      //     this.handleAddToChildrenFromParent(this.newRoom.children);
-      //   }
-      //   this.$emit("handleAddToChildrenFromParent", this.newRoom);
-      // }
+    
     },
     handleAddToChildrenFromParent(data) {
        console.log("handleAddToChildrenFromParent", data);
-      // for (let child of data) {
-      //   child.level--;
-      //   if (child.children) this.onAddChildrenLevel(child.children);
-      // }
+     
     },
 
     //
@@ -150,7 +132,6 @@ export default {
       console.log("handleRemoveFromParent", id);
     },
     handleAddToParent(data) {
-      // console.log(this.newRoom);
       console.log("handleAddToParent", data);
     },
   },
