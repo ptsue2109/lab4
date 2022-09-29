@@ -29,8 +29,9 @@ export default {
   },
   methods: {
     handleDeleteItem(id) {
-      this.data.splice(
-        this.data.findIndex((room) => room.id === id),
+      console.log('id',id);
+      this.listData.splice(
+        this.listData.findIndex((room) => room.id === id),
         1
       );
     },
@@ -38,12 +39,15 @@ export default {
       this.listData.push(room);
     },
     onAddChildrenLevel(childrenArray) {
+      console.log('onAddChildrenLevel',childrenArray)
       for (let child of childrenArray) {
         child.level++;
         if (child.children) this.onAddChildrenLevel(child.children);
       }
     },
     handleAddToChildrenFromParent(room) {
+      console.log('handleAddToChildrenFromParent',room);
+  
       for (let item of this.listData) {
         if (item.children.length > 0 && item !== room) {
           room.level++;

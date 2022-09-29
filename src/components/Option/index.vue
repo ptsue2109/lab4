@@ -24,11 +24,11 @@ export default {
     },
     levelUp() {
       this.toggleOption();
-      this.$emit("onAddLevel");
+      this.$emit("levelUp");
     },
     levelDown() {
       this.toggleOption();
-      this.$emit("onMinusLevel");
+      this.$emit("levelDown");
     },
   },
 };

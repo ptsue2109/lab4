@@ -32,42 +32,11 @@
   </div>
 </template>
 <script>
-  import shortid from 'shortid'
+import shortid from "shortid";
 export default {
   name: "AddModel",
-  methods: {
-    toggleModal() {
-      if (this.error.status) this.error.status = !this.error.status;
-      this.$emit("toggleModal");
-    },
-    addRoom() {
-      this.checkName();
-      if (!this.error.status) {
-        this.$emit("onAddRoom", this.newRoom);
-      }
-      this.toggleModal();
-    },
-    checkName() {
-      const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;// eslint-disable-line
-
-      if (!this.newRoom.name.length) {
-        this.error = {
-          status: true,
-          message: "Không được để trống tên phòng",
-        };
-      } else if (this.newRoom.name.match(regex)) {
-        this.error = {
-          status: true,
-          message: "Tên phòng không được chứa ký tự đặc biệt",
-        };
-      } else this.error.status = false;
-    },
-
-  },
-  computed:{
-   
-  },
-  props:['toggle', 'parentID'],
+  computed: {},
+  props: ["toggle", "parentID"],
 
   data() {
     return {
@@ -81,6 +50,34 @@ export default {
         message: "",
       },
     };
+  },
+  methods: {
+    toggleModal() {
+      if (this.error.status) this.error.status = !this.error.status;
+      this.$emit("toggleModal");
+    },
+    addRoom() {
+      this.checkName();
+      if (!this.error.status) {
+        this.$emit("onAddRoom", this.newRoom);
+        this.toggleModal();
+      }
+    },
+    checkName() {
+      const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/; // eslint-disable-line
+
+      if (!this.newRoom.name.length) {
+        this.error = {
+          status: true,
+          message: "Không được để trống tên phòng",
+        };
+      } else if (this.newRoom.name.match(regex)) {
+        this.error = {
+          status: true,
+          message: "Tên phòng không được chứa ký tự đặc biệt",
+        };
+      } else this.error.status = false;
+    },
   },
 };
 </script>
@@ -179,20 +176,5 @@ export default {
   font-size: 12px;
   line-height: 20px;
   margin-bottom: 10px;
-}
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #48647f;
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #48647f;
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #48647f;
 }
 </style>
