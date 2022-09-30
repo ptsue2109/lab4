@@ -3,6 +3,7 @@
     <div class="room__container">
       <div
         class="room__wrapper"
+        :class="{ active: 'disable' }"
         @contextmenu.prevent="toggleOption"
         @click="show"
       >
@@ -19,9 +20,6 @@
           :room="child"
           :style="childStyle"
           @handleDeleteItem="handleDeleteItem(child.id)"
-          @removeFromParent="handleRemoveFromParent"
-          @addToParent="handleAddToParent"
-          @checkChildrenFromParent="handleAddToChildrenFromParent"
         />
       </div>
       <OptionC
@@ -30,9 +28,8 @@
         @toggleOption="toggleOption"
         @toggleModal="toggleModal"
         @onDeleteItem="onDeleteItem"
-        @levelUp="onAddLevel"
-        @levelDown="onMinusLevel"
-        
+        @levelUp="onAddLevel(room)"
+        @levelDown="onMinusLevel(room)"
       />
     </div>
     <AddModel
@@ -92,47 +89,49 @@ export default {
     onDeleteItem() {
       this.$emit("handleDeleteItem");
     },
-   
-    //levelDOWN
-    onMinusLevel() {
-      console.log("onMinusLevel");
+    handleLevelDownChild(child) {
+      for (let item of child) {
+        item.level++;
+        if (item.children) {
+          this.handleLevelDownChild(item.children);
+        }
+      }
+    },
+    onMinusLevel(id) {
+      console.log('id', id);
+      if (this.newRoom.level > 1) {
+        this.newRoom.level++;
+        if (this.newRoom.children) {
+          this.handleLevelDownChild(this.newRoom.children);
+        }
+      }
+    },
+    onAddLevel(tree) {
+        console.log(tree);
+        if(tree.level === 1) {
+          console.log('tree node cant upgrade');
+        }else {
+          this.newRoom.level--;
+          if(this.newRoom.children) {
+            this.onAddChildrenLevel(this.newRoom.children)
+          }
+        }
+    },
+    onAddChildrenLevel(child) {
+      for (let item of child) {
+        item.level--;
+        if (item.children) {
+          this.onAddChildrenLevel(item.children);
+        }
+      }
+    },
     
-    },
-
-    onMinusChildrenLevel(data) {
-      console.log("onMinusChildrenLevel", data);
-     
-    },
-
-    //levelUp
-     onAddLevel() {  
-      console.log("onAddLevel");
-      this.$emit("checkChildrenFromParent", this.newRoom);
-    },
-    onAddChildrenLevel() {
-      console.log("onAddChildrenLevel");
-    
-    },
-    handleAddToChildrenFromParent(data) {
-       console.log("handleAddToChildrenFromParent", data);
-     
-    },
-
-    //
     handleDeleteItem(id) {
       console.log("handleDeleteItem", id);
       this.newRoom.children.splice(
         this.newRoom.children.findIndex((item) => item.id === id),
         1
       );
-    },
-
-    //
-    handleRemoveFromParent(id) {
-      console.log("handleRemoveFromParent", id);
-    },
-    handleAddToParent(data) {
-      console.log("handleAddToParent", data);
     },
   },
   computed: {
@@ -156,8 +155,8 @@ export default {
     position: relative;
     &::before {
       content: "";
-      // height: 33px;
-      height: calc(100% + 15px);
+      height: 33px;
+      // height: calc(100% + 15px);
       border: 1px solid #dcdcdc;
       left: -10px;
       position: absolute;
@@ -166,12 +165,12 @@ export default {
 
     &:last-child::before {
       content: "";
-      height: 50px;
-      // height: 100%;
+      height: calc(100% + 15px);
       border: 1px solid #dcdcdc;
       left: -10px;
       position: absolute;
-      top: -15px;
+      top: -30px;
+      z-index: -1;
     }
   }
 

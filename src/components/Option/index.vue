@@ -2,14 +2,18 @@
   <div class="option" v-if="toggle">
     <div class="option__item" @click="toggleModal">Thêm phòng ban</div>
     <div class="option__item" @click="deleteRoom">Xóa phòng ban</div>
-    <div class="option__item" @click="levelUp">Nâng level</div>
-    <div class="option__item" @click="levelDown">Giảm level</div>
+    <div class="option__item" @click="levelUp">
+      Nâng level 
+    </div>
+    <div class="option__item" @click="levelDown">
+      Giảm level
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: "OptionC",
-  props:['toggle'],
+  props: ["toggle", "room"],
   methods: {
     toggleOption() {
       this.$emit("toggleOption");
@@ -53,7 +57,6 @@ export default {
     display: flex;
     align-items: center;
     padding: 5px;
-
     &:first-child {
       border-radius: 4px 4px 0px 0px;
     }
